@@ -1,0 +1,651 @@
+<!DOCTYPE html public "-//ietf//dtd html 2.0//en">
+<html>
+
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Namo WebEditor v4.0">
+<title>獻給罔腰的歌</title>
+<style>
+<!--
+h1 { font-family:細明體; font-size:14pt; color:rgb(0,0,160); }
+h2 { font-family:細明體; font-size:12pt; color:rgb(0,106,106); }
+p { font-family:細明體; color:rgb(0,0,0); }
+p.namo-list { font-family:細明體; font-size:12pt; color:rgb(0,0,0); }
+p.namo-sublist { font-family:細明體; font-size:10pt; color:rgb(0,0,0); }
+-->
+</style>
+<link rel="stylesheet" href="css/default.css">
+<meta name="namo-theme" content="Smile">
+<script language="JavaScript">
+<!--
+function namosw_page_width()
+{
+  return (navigator.appName.indexOf('Netscape', 0) != -1) ? innerWidth  : document.body.clientWidth;
+}
+
+function namosw_page_height()
+{
+  return (navigator.appName.indexOf('Netscape', 0) != -1) ? innerHeight : document.body.clientHeight;
+}
+
+function namosw_init_clip_effect()
+{
+  var rect_left, rect_top, rect_width, rect_height;
+  var type, color;
+  var width, height;
+  var args = namosw_init_clip_effect.arguments;
+
+  if (args[0] == 0 && args.length == 3) {
+    rect_left   = 0;
+    rect_top    = 0;
+    rect_width  = namosw_page_width();
+    rect_height = namosw_page_height();
+    type  = args[1];
+    color = args[2];
+
+  } else if (args[0] == 1 && args.length == 4) {
+    if (args[1] == '')
+      return;
+    var layer;
+    if (navigator.appName.indexOf('Netscape', 0) != -1) {
+      layer = document.layers[args[1]];
+      if (layer) {
+        rect_left   = layer.left;
+	rect_top    = layer.top;
+	rect_width  = layer.clip.width;
+	rect_height = layer.clip.height;
+      } else {
+        return;
+      }
+    } else {
+      layer = document.all[args[1]];
+      if (layer) {
+        rect_left   = layer.style.pixelLeft;
+	rect_top    = layer.style.pixelTop;
+	rect_width  = layer.style.pixelWidth;
+	rect_height = layer.style.pixelHeight;
+      } else {
+        return;
+      }
+    }
+    type  = args[2];
+    color = args[3];
+
+  } else if (args[0] == 2 && args.length == 7) {
+    rect_left   = args[1];
+    rect_top    = args[2];
+    rect_width  = args[3];
+    rect_height = args[4];
+    type        = args[5];
+    color       = args[6];
+
+  } else {
+    return;
+  }
+
+  window._cl_style     = new Array();
+  window._cl_interval  = 0;
+  window._cl_count     = 0;
+  window._cl_max_count = 40;
+
+  if (type == 0) 
+    window._cl_number = 8;
+  else if (type == 1) 
+    window._cl_number = Math.min(64, Math.ceil(rect_height/10));
+  else if (type == 2) 
+    window._cl_number = Math.min(64, Math.ceil(rect_width/10));
+  
+  window._cl_rect_left   = rect_left;
+  window._cl_rect_top    = rect_top;
+  window._cl_rect_width  = rect_width;
+  window._cl_rect_height = rect_height;
+
+  if (type == 0) {
+    width  = Math.floor(rect_width  / window._cl_number);
+    height = Math.floor(rect_height / window._cl_number);
+
+    for (i = 0; i < window._cl_number*window._cl_number; i++) {
+      if (navigator.appName.indexOf('Netscape', 0) != -1) {
+        window._cl_style[i] = eval("document.layers.namoswcliplayer"+i)
+        window._cl_style[i].clip.width  = width;
+        window._cl_style[i].clip.height = height;
+        window._cl_style[i].left = rect_left + (i%window._cl_number) * width;
+        window._cl_style[i].top  = rect_top  + Math.floor(i/window._cl_number) * height;
+	window._cl_style[i].bgColor = color;
+      } else {
+        window._cl_style[i] = eval("document.all.namoswcliplayer" + i + ".style");
+        window._cl_style[i].pixelWidth  = width;
+        window._cl_style[i].pixelHeight = height;
+        window._cl_style[i].pixelLeft = rect_left + (i%window._cl_number) * width;
+        window._cl_style[i].pixelTop  = rect_top  + Math.floor(i/window._cl_number) * height;
+	window._cl_style[i].backgroundColor = color;
+      }
+    }
+    window._cl_interval = setInterval("namosw_cl_remove_box()", 10);
+
+  } else if (type == 1) {
+    height = rect_height / window._cl_number;
+
+    for (i = 0; i < window._cl_number; i++) {
+      if (navigator.appName.indexOf('Netscape', 0) != -1) {
+        window._cl_style[i] = eval("document.layers.namoswcliplayer"+i)
+        window._cl_style[i].clip.width  = rect_width;
+        window._cl_style[i].clip.height = height;
+        window._cl_style[i].left = rect_left;
+        window._cl_style[i].top  = rect_top  + i*height;
+	window._cl_style[i].bgColor = color;
+      } else {
+        window._cl_style[i] = eval("document.all.namoswcliplayer" + i + ".style");
+        window._cl_style[i].pixelWidth  = rect_width;
+        window._cl_style[i].pixelHeight = height;
+        window._cl_style[i].pixelLeft = rect_left;
+        window._cl_style[i].pixelTop  = rect_top  + i*height;
+        window._cl_style[i].clip = "rect(0 " + rect_width + " " + height + " 0)";
+	window._cl_style[i].backgroundColor = color;
+      }
+    }
+    window._cl_interval = setInterval("namosw_cl_change_clip1()", 10);
+
+  } else if (type == 2) {
+    width = rect_width / window._cl_number;
+
+    for (i = 0; i < window._cl_number; i++) {
+      if (navigator.appName.indexOf('Netscape', 0) != -1) {
+        window._cl_style[i] = eval("document.layers.namoswcliplayer"+i);
+        window._cl_style[i].clip.width  = width;
+        window._cl_style[i].clip.height = rect_height;
+        window._cl_style[i].left = rect_left + i*width;
+        window._cl_style[i].top  = rect_top;
+	window._cl_style[i].bgColor = color;
+      } else {
+        window._cl_style[i] = eval("document.all.namoswcliplayer" + i + ".style");
+        window._cl_style[i].pixelWidth  = width;
+        window._cl_style[i].pixelHeight = rect_height;
+        window._cl_style[i].pixelLeft = rect_left + i*width;
+        window._cl_style[i].pixelTop  = rect_top;
+        window._cl_style[i].clip = "rect(0 " + width + " " + rect_height + " 0)";
+	window._cl_style[i].backgroundColor = color;
+      }
+    }
+    window._cl_interval = setInterval("namosw_cl_change_clip2()", 10);
+
+  } else if (type == 3) {
+    if (navigator.appName.indexOf('Netscape', 0) != -1) {
+      window._cl_style[0] = eval("document.layers.namoswcliplayer"+0)
+      window._cl_style[0].clip.width  = rect_width;
+      window._cl_style[0].clip.height = rect_height;
+      window._cl_style[0].left = rect_left;
+      window._cl_style[0].top  = rect_top;
+      window._cl_style[0].bgColor = color;
+    } else {
+      window._cl_style[0] = eval("document.all.namoswcliplayer" + 0 + ".style");
+      window._cl_style[0].pixelWidth  = rect_width;
+      window._cl_style[0].pixelHeight = rect_height;
+      window._cl_style[0].pixelLeft = rect_left;
+      window._cl_style[0].pixelTop  = rect_top;
+      window._cl_style[0].backgroundColor = color;
+    }
+    window._cl_interval = setInterval("namosw_cl_change_clip3()", 10);
+
+  } else if (type == 4 || type == 5 || type == 6) {
+    if (navigator.appName.indexOf('Netscape', 0) != -1) {
+      if (type == 4 || type == 5) {
+        window._cl_style[0] = document.layers.namoswcliplayer0;
+        window._cl_style[0].clip.width  = rect_width/2;
+        window._cl_style[0].clip.height = rect_height;
+        window._cl_style[0].left = rect_left;
+        window._cl_style[0].top  = rect_top;
+        window._cl_style[0].bgColor = color;
+
+        window._cl_style[1] = document.layers.namoswcliplayer1;
+        window._cl_style[1].clip.width  = rect_width/2;
+        window._cl_style[1].clip.height = rect_height;
+        window._cl_style[1].left = rect_left + rect_width/2;
+        window._cl_style[1].top  = rect_top;
+        window._cl_style[1].bgColor = color;
+      }
+
+      if (type == 4 || type == 6) {
+        window._cl_style[2] = document.layers.namoswcliplayer2;
+        window._cl_style[2].clip.width  = rect_width;
+        window._cl_style[2].clip.height = rect_height/2;
+        window._cl_style[2].left = rect_left;
+        window._cl_style[2].top  = rect_top;
+        window._cl_style[2].bgColor = color;
+
+        window._cl_style[3] = document.layers.namoswcliplayer3;
+        window._cl_style[3].clip.width  = rect_width;
+        window._cl_style[3].clip.height = rect_height/2;
+        window._cl_style[3].left = rect_left;
+        window._cl_style[3].top  = rect_top + rect_height/2;
+        window._cl_style[3].bgColor = color;
+      }
+    } else {
+      if (type == 4 || type == 5) {
+        window._cl_style[0] = document.all.namoswcliplayer0.style;
+        window._cl_style[0].pixelWidth  = rect_width/2;
+        window._cl_style[0].pixelHeight = rect_height;
+        window._cl_style[0].pixelLeft = rect_left;
+        window._cl_style[0].pixelTop  = rect_top;
+        window._cl_style[0].clip      = "rect(0" + (rect_width/2) + " " + rect_height + " 0)";
+	window._cl_style[0].backgroundColor = color;
+
+        window._cl_style[1] = document.all.namoswcliplayer1.style;
+        window._cl_style[1].pixelWidth  = rect_width/2;
+        window._cl_style[1].pixelHeight = rect_height;
+        window._cl_style[1].pixelLeft = rect_left + rect_width/2;
+        window._cl_style[1].pixelTop  = rect_top;
+        window._cl_style[1].clip      = "rect(0" + (rect_width/2) + " " + rect_height + " 0)";
+	window._cl_style[1].backgroundColor = color;
+      }
+
+      if (type == 4 || type == 6) {
+        window._cl_style[2] = document.all.namoswcliplayer2.style;
+        window._cl_style[2].pixelWidth  = rect_width;
+        window._cl_style[2].pixelHeight = rect_height/2;
+        window._cl_style[2].pixelLeft = rect_left;
+        window._cl_style[2].pixelTop  = rect_top;
+        window._cl_style[2].clip      = "rect(0" + rect_width + " " + (rect_height/2) + " 0)";
+	window._cl_style[2].backgroundColor = color;
+
+        window._cl_style[3] = document.all.namoswcliplayer3.style;
+        window._cl_style[3].pixelWidth  = rect_width;
+        window._cl_style[3].pixelHeight = rect_height/2;
+        window._cl_style[3].pixelLeft = rect_left;
+        window._cl_style[3].pixelTop  = rect_top + rect_height/2;
+        window._cl_style[3].clip      = "rect(0" + rect_width + " " + (rect_height/2) + " 0)";
+	window._cl_style[3].backgroundColor = color;
+      }
+
+    }
+    window._cl_interval = setInterval("namosw_cl_change_clip456(" + type + ")", 10);
+  }
+}
+
+function namosw_cl_change_clip1()
+{
+  var height = window._cl_rect_height  / window._cl_number;
+
+  window._cl_count += 2;
+
+  for (i = 0; i < window._cl_number; i++) {
+    if (navigator.appName.indexOf('Netscape', 0) != -1) {
+      window._cl_style[i].clip.top  = window._cl_count;
+    } else {
+      window._cl_style[i].clip = "rect(" + window._cl_count + " auto " + height + " auto)";
+    }
+  }
+
+  if (height <= window._cl_count)
+    clearInterval(window._cl_interval);
+}
+
+function namosw_cl_change_clip2()
+{
+  var width = window._cl_rect_width  / window._cl_number;
+
+  window._cl_count += 2;
+
+  for (i = 0; i < window._cl_number; i++) {
+    if (navigator.appName.indexOf('Netscape', 0) != -1) {
+      window._cl_style[i].clip.left  = window._cl_count;
+    } else {
+      window._cl_style[i].clip = "rect(auto " + width + " auto " + window._cl_count + ")";
+    }
+  }
+
+  if (width <= window._cl_count)
+    clearInterval(window._cl_interval);
+}
+
+function namosw_cl_change_clip3()
+{
+  var rect_width  = window._cl_rect_width;
+  var rect_height = window._cl_rect_height;
+
+  var x_delta = rect_width/2/window._cl_max_count*window._cl_count;
+  var y_delta = rect_height/2/window._cl_max_count*window._cl_count;
+
+  window._cl_count++;
+
+    if (navigator.appName.indexOf('Netscape', 0) != -1) {
+      window._cl_style[0].clip.left = x_delta;
+      window._cl_style[0].clip.top  = y_delta;
+      window._cl_style[0].clip.right  = rect_width  - x_delta;
+      window._cl_style[0].clip.bottom = rect_height - y_delta;
+    } else {
+      var top, right, bottom, left;
+      top    = y_delta;
+      right  = rect_width - x_delta;
+      bottom = rect_height - y_delta;
+      left   = x_delta;
+      window._cl_style[0].clip = "rect(" + top + " " + right + " " + bottom + " " + left + ")";
+    }  
+
+  if (window._cl_max_count < window._cl_count)
+    clearInterval(window._cl_interval);
+}
+
+function namosw_cl_change_clip456(type)
+{
+  var rect_width  = window._cl_rect_width;
+  var rect_height = window._cl_rect_height;
+
+  var x_delta = rect_width/2/window._cl_max_count*window._cl_count;
+  var y_delta = rect_height/2/window._cl_max_count*window._cl_count;
+
+  window._cl_count++;
+
+  if (navigator.appName.indexOf('Netscape', 0) != -1) {
+    if (type == 4 || type == 5) {
+      window._cl_style[0].clip.right = rect_width/2 - x_delta;
+      window._cl_style[1].clip.left  = x_delta;
+    }
+    if (type == 4 || type == 6) {
+      window._cl_style[2].clip.bottom = rect_height/2 - y_delta;
+      window._cl_style[3].clip.top    = y_delta;
+    }
+  } else {
+    var top, right, bottom, left;
+
+    right   = rect_width/2 - x_delta;
+    left    = x_delta;
+    bottom  = rect_height/2 - y_delta;
+    top     = y_delta;
+
+    if (type == 4 || type == 5) {
+      window._cl_style[0].clip = "rect(auto " + right + " auto 0)";
+      window._cl_style[1].clip = "rect(auto " + (rect_width/2) + " auto " + left + ")";
+    }
+    if (type == 4 || type == 6) {
+      window._cl_style[2].clip = "rect(0 auto " + bottom + " auto)";
+      window._cl_style[3].clip = "rect(" + top + " auto " + (rect_height/2) + " auto)";
+    }
+  }  
+
+  if (window._cl_max_count < window._cl_count)
+    clearInterval(window._cl_interval);
+}
+
+function namosw_cl_remove_box() 
+{
+  var i;
+
+  i = Math.round(Math.random()*(window._cl_number*window._cl_number-1));
+  while (window._cl_style[i].visibility == 'hidden' || window._cl_style[i].visibility == 'hide') 
+    i = Math.round(Math.random()*(window._cl_number*window._cl_number-1));
+  window._cl_style[i].visibility = 'hidden';
+
+  window._cl_count++;
+  if (window._cl_number*window._cl_number <= window._cl_count)
+    clearInterval(window._cl_interval);
+}
+
+// -->
+</script>
+<script language="JavaScript">
+<!--
+function na_change_img_src(name, nsdoc, rpath, preload)
+{ 
+  var img = eval((navigator.appName == 'Netscape') ? nsdoc+'.'+name : 'document.all.'+name);
+  if (name == '')
+    return;
+  if (img) {
+    img.altsrc = img.src;
+    img.src    = rpath;
+  } 
+}
+
+function na_preload_img()
+{ 
+  var img_list = na_preload_img.arguments;
+  if (document.preloadlist == null) 
+    document.preloadlist = new Array();
+  var top = document.preloadlist.length;
+  for (var i=0; i < img_list.length; i++) {
+    document.preloadlist[top+i]     = new Image;
+    document.preloadlist[top+i].src = img_list[i+1];
+  } 
+}
+
+function na_restore_img_src(name, nsdoc)
+{
+  var img = eval((navigator.appName == 'Netscape') ? nsdoc+'.'+name : 'document.all.'+name);
+  if (name == '')
+    return;
+  if (img && img.altsrc) {
+    img.src    = img.altsrc;
+    img.altsrc = null;
+  } 
+}
+
+// -->
+</script>
+</head>
+
+<body background="images/nth_smile_bg.gif" bgcolor="#9DFFFF" text="#000000" link="fuchsia" vlink="navy" alink="#8000FF" OnLoad=" namosw_init_clip_effect(0, 0, 'black');na_preload_img(false, 'nav/nav_smile__home_btn_vr.gif', 'nav/nav_smile_special_1_1_tvr.gif', 'nav/nav_smile_family_1_tvr.gif', 'nav/nav_smile_special_1_tvr.gif', 'nav/nav_smile_album_tvr.gif', 'nav/nav_smile_family_tvr.gif', 'nav/nav_smile_news_tvr.gif', 'nav/nav_smile_album_1_tvr.gif', 'nav/nav_smile_special_tvr.gif');">
+<table border="0" width="750" bordercolordark="#008040" bordercolorlight="silver" cellspacing="2" align="center">
+    <tr>
+        <td width="125">
+            <p>&nbsp;</p>
+        </td>
+        <td align="center"><!--NAMO_NAVBAR_START B H    -->
+<div>
+<img src="nav/nav_smile_news_2_bhb.gif" name="nav_news_2_BH0" border="0" class="namo-banner" alt="獻給罔腰的歌"></div>
+            <!--NAMO_NAVBAR_END--></td>
+    </tr>
+    <tr>
+        <td width="125">
+            <p>&nbsp;</p>
+        </td>
+        <td align="center">
+            <p>&nbsp;</p>
+        </td>
+    </tr>
+    <tr>
+        <td width="125" valign="top"><!--NAMO_NAVBAR_START T V   h-->
+<div>
+<a href="index.html" 
+onmouseover="na_change_img_src('nav_news_2_TV0', 'document', 'nav/nav_smile__home_btn_vr.gif', true)" 
+onmouseout="na_restore_img_src('nav_news_2_TV0', 'document')"><img src="nav/nav_smile__home_btn_v.gif" name="nav_news_2_TV0" border="0" class="namo-button1" alt="首頁"></a><br>
+<a href="special_1_1.html" 
+onmouseover="na_change_img_src('nav_news_2_TV1', 'document', 'nav/nav_smile_special_1_1_tvr.gif', true)" 
+onmouseout="na_restore_img_src('nav_news_2_TV1', 'document')"><img src="nav/nav_smile_special_1_1_tv.gif" name="nav_news_2_TV1" border="0" class="namo-button1" alt="命名由來"></a><br>
+<a href="family_1.html" 
+onmouseover="na_change_img_src('nav_news_2_TV2', 'document', 'nav/nav_smile_family_1_tvr.gif', true)" 
+onmouseout="na_restore_img_src('nav_news_2_TV2', 'document')"><img src="nav/nav_smile_family_1_tv.gif" name="nav_news_2_TV2" border="0" class="namo-button1" alt="小罔腰逃家記"></a><br>
+<a href="special_1.html" 
+onmouseover="na_change_img_src('nav_news_2_TV3', 'document', 'nav/nav_smile_special_1_tvr.gif', true)" 
+onmouseout="na_restore_img_src('nav_news_2_TV3', 'document')"><img src="nav/nav_smile_special_1_tv.gif" name="nav_news_2_TV3" border="0" class="namo-button1" alt="小罔腰大事紀"></a><br>
+<a href="album.html" 
+onmouseover="na_change_img_src('nav_news_2_TV4', 'document', 'nav/nav_smile_album_tvr.gif', true)" 
+onmouseout="na_restore_img_src('nav_news_2_TV4', 'document')"><img src="nav/nav_smile_album_tv.gif" name="nav_news_2_TV4" border="0" class="namo-button1" alt="小罔腰寫真集"></a><br>
+<a href="family.html" 
+onmouseover="na_change_img_src('nav_news_2_TV5', 'document', 'nav/nav_smile_family_tvr.gif', true)" 
+onmouseout="na_restore_img_src('nav_news_2_TV5', 'document')"><img src="nav/nav_smile_family_tv.gif" name="nav_news_2_TV5" border="0" class="namo-button1" alt="溫馨家族"></a><br>
+<a href="news.html" 
+onmouseover="na_change_img_src('nav_news_2_TV6', 'document', 'nav/nav_smile_news_tvr.gif', true)" 
+onmouseout="na_restore_img_src('nav_news_2_TV6', 'document')"><img src="nav/nav_smile_news_tv.gif" name="nav_news_2_TV6" border="0" class="namo-button1" alt="影片集"></a><br>
+<img src="nav/nav_smile_news_2_tvh.gif" name="nav_news_2_TV7" border="0" class="namo-hibutton1" alt="獻給罔腰的歌"><br>
+<a href="album_1.html" 
+onmouseover="na_change_img_src('nav_news_2_TV8', 'document', 'nav/nav_smile_album_1_tvr.gif', true)" 
+onmouseout="na_restore_img_src('nav_news_2_TV8', 'document')"><img src="nav/nav_smile_album_1_tv.gif" name="nav_news_2_TV8" border="0" class="namo-button1" alt="訪客留影"></a><br>
+<a href="special.html" 
+onmouseover="na_change_img_src('nav_news_2_TV9', 'document', 'nav/nav_smile_special_tvr.gif', true)" 
+onmouseout="na_restore_img_src('nav_news_2_TV9', 'document')"><img src="nav/nav_smile_special_tv.gif" name="nav_news_2_TV9" border="0" class="namo-button1" alt="感謝您"></a></div>
+            <!--NAMO_NAVBAR_END--></td>
+        <td valign="top" align="center">
+            <p align="center"><img src="images/nth_smile_hr.gif" border="0" class="namo-hr"></p>
+            <p align="center"><font size="2">下面是爸爸、媽媽唱給我的歌，除了這片光碟中的CD音軌外，</font></p>
+            <p align="center"><font size="2">爸爸也轉成了MP3檔，方便您使用電腦播放。</font></p>
+            <p align="center"><font size="2">請點選歌曲名稱播放</font></p>
+            <p align="center"><font size="2">如果有詢問您是否播放，請記得按&quot;是&quot;或&quot;確定&quot;哦！</font></p>
+            <table align="center" class="namo-table" border="1" width="541">
+                <tr>
+                    <td width="179" bgcolor="#FFFF99">
+                        <p align="center"><span style="background-color:rgb(255,255,153);">歌曲名稱</span></p>
+                    </td>
+                    <td width="346" bgcolor="#FFFF99">
+                        <p align="center"><span style="background-color:rgb(255,255,153);">備　　　　　　　　　　　　　　　註</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="179">
+                        <p><a href="Songs/(00)Cry.wav"><img src="i_ant_pink_tbg.gif" width="60" height="60" border="0" alt="i_ant_pink_tbg.gif"></a><a href="Songs/(00)Cry.wav">第一道哭聲</a></p>
+                    </td>
+                    <td width="346">
+                        <p><font size="2">這是小罔腰剛出聲時的哭聲，很宏亮哦！</font></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="179">
+                        <p><a href="Songs/(09)Talk.mp3"><img src="i_ant_mint_tbg.gif" width="60" height="60" border="0" alt="i_ant_mint_tbg.gif">給小罔腰的話</a></p>
+                    </td>
+                    <td width="346">
+                        <p><font size="2">這段是爸媽給我的話，以及為什麼我的名字要叫賴禹蓉的原因，歡迎收聽！</font></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="179">
+                        <p><a href="Songs/(01)Heart.mp3"><img src="i_ant_pink_tbg.gif" width="60" height="60" border="0" alt="i_ant_pink_tbg.gif">心肝寶貝</a></p>
+                    </td>
+                    <td width="346">
+                        <p><font size="2">由爸爸演唱--鳳飛飛的&quot;心肝寶貝&quot;</font></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="179">
+                        <p><a href="Songs/(04)Little.mp3"><img src="i_ant_mint_tbg.gif" width="60" height="60" border="0" alt="i_ant_mint_tbg.gif">接班小情人</a></p>
+                    </td>
+                    <td width="346">
+                        <p><font size="2">這是媽媽自己作詞、作曲的歌，很好聽哦！</font></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="179">
+                        <p><a href="Songs/(03)Sun.mp3"><img src="i_ant_pink_tbg.gif" width="60" height="60" border="0" alt="i_ant_pink_tbg.gif">守著陽光守著你</a></p>
+                    </td>
+                    <td width="346">
+                        <p><font size="2">爸爸說他會守著媽媽、守著我，請聽...</font></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="179">
+                        <p><a href="Songs/(05)Sleep.mp3"><img src="i_ant_mint_tbg.gif" width="60" height="60" border="0" alt="i_ant_mint_tbg.gif">催眠組曲</a></p>
+                    </td>
+                    <td width="346">
+                        <p><font size="2">這是爸爸演唱的，看看你聽了會不會想睡覺！</font></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="179">
+                        <p><a href="Songs/(06)Depend.mp3"><img src="i_ant_pink_tbg.gif" width="60" height="60" border="0" alt="i_ant_pink_tbg.gif"></a><font size="5"><a href="Songs/(06)Depend.mp3">依賴</a></font><a href="Songs/(06)Depend.mp3">健二</a></p>
+                    </td>
+                    <td width="346">
+                        <p><font size="2">這首是媽媽作詞作曲的哦，是送給爸爸的呢！</font></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="179">
+                        <p><a href="Songs/(08)Zoon.mp3"><img src="i_ant_mint_tbg.gif" width="60" height="60" border="0" alt="i_ant_mint_tbg.gif">紫竹調</a></p>
+                    </td>
+                    <td width="346">
+                        <p><font size="2">這首是媽媽改編自紫竹調的歌，聽起來有點爆笑！</font></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="179">
+                        <p><a href="Songs/(07)Tea.mp3"><img src="i_ant_pink_tbg.gif" width="60" height="60" border="0" alt="i_ant_pink_tbg.gif">茶山情歌</a></p>
+                    </td>
+                    <td width="346">
+                        <p><font size="2">這是爸爸說要唱給我這個小情人的歌！</font></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="179">
+                        <p><a href="Songs/(10)IWill.mp3"><img src="i_ant_mint_tbg.gif" width="60" height="60" border="0" alt="i_ant_mint_tbg.gif">我願意</a></p>
+                    </td>
+                    <td width="346">
+                        <p><font size="2">這是爸媽的心聲哦！</font></p>
+                    </td>
+                </tr>
+            </table>
+            <p align="center"><img src="images/nth_smile_hr.gif" border="0" class="namo-hr"></p>
+<font size="2"><!--NAMO_NAVBAR_START T h   h-->
+<div>
+[<a href="index.html">首頁</a>][<a href="special_1_1.html">命名由來</a>][<a href="family_1.html">小罔腰逃家記</a>][<a href="special_1.html">小罔腰大事紀</a>][<a href="album.html">小罔腰寫真集</a>][<a href="family.html">溫馨家族</a>][<a href="news.html">影片集</a>][獻給罔腰的歌][<a href="album_1.html">訪客留影</a>][<a href="special.html">感謝您</a>]</div>
+            <!--NAMO_NAVBAR_END--></font>
+            <hr size="1" width="516">
+            <p align="center"><font size="1">版權沒有，歡迎使用<br><a href="mailto:chener@ms1.hinet.ent">chener@ms1.hinet.ent</a></font></p>
+        </td>
+        </font>
+    </tr>
+</table>
+<p>&nbsp;</p>
+
+<div id="namoswcliplayer0" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer1" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer2" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer3" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer4" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer5" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer6" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer7" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer8" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer9" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer10" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer11" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer12" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer13" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer14" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer15" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer16" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer17" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer18" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer19" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer20" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer21" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer22" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer23" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer24" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer25" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer26" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer27" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer28" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer29" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer30" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer31" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer32" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer33" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer34" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer35" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer36" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer37" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer38" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer39" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer40" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer41" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer42" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer43" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer44" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer45" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer46" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer47" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer48" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer49" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer50" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer51" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer52" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer53" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer54" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer55" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer56" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer57" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer58" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer59" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer60" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer61" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer62" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer63" style="position:absolute; left:-100; top:-100; z-index:1000;"></div></body>
+
+</html>

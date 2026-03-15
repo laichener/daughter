@@ -1,0 +1,952 @@
+<!DOCTYPE html public "-//ietf//dtd html 2.0//en">
+<html>
+
+<head>
+<meta charset="UTF-8">
+<meta name="generator" content="Namo WebEditor v4.0">
+<title>小罔腰寫真集</title>
+<style>
+<!--
+h1 { font-family:細明體; font-size:14pt; color:rgb(0,0,160); }
+h2 { font-family:細明體; font-size:12pt; color:rgb(0,106,106); }
+p { font-family:細明體; color:rgb(0,0,0); }
+p.namo-list { font-family:細明體; font-size:12pt; color:rgb(0,0,0); }
+p.namo-sublist { font-family:細明體; font-size:10pt; color:rgb(0,0,0); }
+-->
+</style>
+<link rel="stylesheet" href="css/default.css">
+<meta name="namo-theme" content="Smile">
+<script language="JavaScript">
+<!--
+function namosw_page_width()
+{
+  return (navigator.appName.indexOf('Netscape', 0) != -1) ? innerWidth  : document.body.clientWidth;
+}
+
+function namosw_page_height()
+{
+  return (navigator.appName.indexOf('Netscape', 0) != -1) ? innerHeight : document.body.clientHeight;
+}
+
+function namosw_init_clip_effect()
+{
+  var rect_left, rect_top, rect_width, rect_height;
+  var type, color;
+  var width, height;
+  var args = namosw_init_clip_effect.arguments;
+
+  if (args[0] == 0 && args.length == 3) {
+    rect_left   = 0;
+    rect_top    = 0;
+    rect_width  = namosw_page_width();
+    rect_height = namosw_page_height();
+    type  = args[1];
+    color = args[2];
+
+  } else if (args[0] == 1 && args.length == 4) {
+    if (args[1] == '')
+      return;
+    var layer;
+    if (navigator.appName.indexOf('Netscape', 0) != -1) {
+      layer = document.layers[args[1]];
+      if (layer) {
+        rect_left   = layer.left;
+	rect_top    = layer.top;
+	rect_width  = layer.clip.width;
+	rect_height = layer.clip.height;
+      } else {
+        return;
+      }
+    } else {
+      layer = document.all[args[1]];
+      if (layer) {
+        rect_left   = layer.style.pixelLeft;
+	rect_top    = layer.style.pixelTop;
+	rect_width  = layer.style.pixelWidth;
+	rect_height = layer.style.pixelHeight;
+      } else {
+        return;
+      }
+    }
+    type  = args[2];
+    color = args[3];
+
+  } else if (args[0] == 2 && args.length == 7) {
+    rect_left   = args[1];
+    rect_top    = args[2];
+    rect_width  = args[3];
+    rect_height = args[4];
+    type        = args[5];
+    color       = args[6];
+
+  } else {
+    return;
+  }
+
+  window._cl_style     = new Array();
+  window._cl_interval  = 0;
+  window._cl_count     = 0;
+  window._cl_max_count = 40;
+
+  if (type == 0) 
+    window._cl_number = 8;
+  else if (type == 1) 
+    window._cl_number = Math.min(64, Math.ceil(rect_height/10));
+  else if (type == 2) 
+    window._cl_number = Math.min(64, Math.ceil(rect_width/10));
+  
+  window._cl_rect_left   = rect_left;
+  window._cl_rect_top    = rect_top;
+  window._cl_rect_width  = rect_width;
+  window._cl_rect_height = rect_height;
+
+  if (type == 0) {
+    width  = Math.floor(rect_width  / window._cl_number);
+    height = Math.floor(rect_height / window._cl_number);
+
+    for (i = 0; i < window._cl_number*window._cl_number; i++) {
+      if (navigator.appName.indexOf('Netscape', 0) != -1) {
+        window._cl_style[i] = eval("document.layers.namoswcliplayer"+i)
+        window._cl_style[i].clip.width  = width;
+        window._cl_style[i].clip.height = height;
+        window._cl_style[i].left = rect_left + (i%window._cl_number) * width;
+        window._cl_style[i].top  = rect_top  + Math.floor(i/window._cl_number) * height;
+	window._cl_style[i].bgColor = color;
+      } else {
+        window._cl_style[i] = eval("document.all.namoswcliplayer" + i + ".style");
+        window._cl_style[i].pixelWidth  = width;
+        window._cl_style[i].pixelHeight = height;
+        window._cl_style[i].pixelLeft = rect_left + (i%window._cl_number) * width;
+        window._cl_style[i].pixelTop  = rect_top  + Math.floor(i/window._cl_number) * height;
+	window._cl_style[i].backgroundColor = color;
+      }
+    }
+    window._cl_interval = setInterval("namosw_cl_remove_box()", 10);
+
+  } else if (type == 1) {
+    height = rect_height / window._cl_number;
+
+    for (i = 0; i < window._cl_number; i++) {
+      if (navigator.appName.indexOf('Netscape', 0) != -1) {
+        window._cl_style[i] = eval("document.layers.namoswcliplayer"+i)
+        window._cl_style[i].clip.width  = rect_width;
+        window._cl_style[i].clip.height = height;
+        window._cl_style[i].left = rect_left;
+        window._cl_style[i].top  = rect_top  + i*height;
+	window._cl_style[i].bgColor = color;
+      } else {
+        window._cl_style[i] = eval("document.all.namoswcliplayer" + i + ".style");
+        window._cl_style[i].pixelWidth  = rect_width;
+        window._cl_style[i].pixelHeight = height;
+        window._cl_style[i].pixelLeft = rect_left;
+        window._cl_style[i].pixelTop  = rect_top  + i*height;
+        window._cl_style[i].clip = "rect(0 " + rect_width + " " + height + " 0)";
+	window._cl_style[i].backgroundColor = color;
+      }
+    }
+    window._cl_interval = setInterval("namosw_cl_change_clip1()", 10);
+
+  } else if (type == 2) {
+    width = rect_width / window._cl_number;
+
+    for (i = 0; i < window._cl_number; i++) {
+      if (navigator.appName.indexOf('Netscape', 0) != -1) {
+        window._cl_style[i] = eval("document.layers.namoswcliplayer"+i);
+        window._cl_style[i].clip.width  = width;
+        window._cl_style[i].clip.height = rect_height;
+        window._cl_style[i].left = rect_left + i*width;
+        window._cl_style[i].top  = rect_top;
+	window._cl_style[i].bgColor = color;
+      } else {
+        window._cl_style[i] = eval("document.all.namoswcliplayer" + i + ".style");
+        window._cl_style[i].pixelWidth  = width;
+        window._cl_style[i].pixelHeight = rect_height;
+        window._cl_style[i].pixelLeft = rect_left + i*width;
+        window._cl_style[i].pixelTop  = rect_top;
+        window._cl_style[i].clip = "rect(0 " + width + " " + rect_height + " 0)";
+	window._cl_style[i].backgroundColor = color;
+      }
+    }
+    window._cl_interval = setInterval("namosw_cl_change_clip2()", 10);
+
+  } else if (type == 3) {
+    if (navigator.appName.indexOf('Netscape', 0) != -1) {
+      window._cl_style[0] = eval("document.layers.namoswcliplayer"+0)
+      window._cl_style[0].clip.width  = rect_width;
+      window._cl_style[0].clip.height = rect_height;
+      window._cl_style[0].left = rect_left;
+      window._cl_style[0].top  = rect_top;
+      window._cl_style[0].bgColor = color;
+    } else {
+      window._cl_style[0] = eval("document.all.namoswcliplayer" + 0 + ".style");
+      window._cl_style[0].pixelWidth  = rect_width;
+      window._cl_style[0].pixelHeight = rect_height;
+      window._cl_style[0].pixelLeft = rect_left;
+      window._cl_style[0].pixelTop  = rect_top;
+      window._cl_style[0].backgroundColor = color;
+    }
+    window._cl_interval = setInterval("namosw_cl_change_clip3()", 10);
+
+  } else if (type == 4 || type == 5 || type == 6) {
+    if (navigator.appName.indexOf('Netscape', 0) != -1) {
+      if (type == 4 || type == 5) {
+        window._cl_style[0] = document.layers.namoswcliplayer0;
+        window._cl_style[0].clip.width  = rect_width/2;
+        window._cl_style[0].clip.height = rect_height;
+        window._cl_style[0].left = rect_left;
+        window._cl_style[0].top  = rect_top;
+        window._cl_style[0].bgColor = color;
+
+        window._cl_style[1] = document.layers.namoswcliplayer1;
+        window._cl_style[1].clip.width  = rect_width/2;
+        window._cl_style[1].clip.height = rect_height;
+        window._cl_style[1].left = rect_left + rect_width/2;
+        window._cl_style[1].top  = rect_top;
+        window._cl_style[1].bgColor = color;
+      }
+
+      if (type == 4 || type == 6) {
+        window._cl_style[2] = document.layers.namoswcliplayer2;
+        window._cl_style[2].clip.width  = rect_width;
+        window._cl_style[2].clip.height = rect_height/2;
+        window._cl_style[2].left = rect_left;
+        window._cl_style[2].top  = rect_top;
+        window._cl_style[2].bgColor = color;
+
+        window._cl_style[3] = document.layers.namoswcliplayer3;
+        window._cl_style[3].clip.width  = rect_width;
+        window._cl_style[3].clip.height = rect_height/2;
+        window._cl_style[3].left = rect_left;
+        window._cl_style[3].top  = rect_top + rect_height/2;
+        window._cl_style[3].bgColor = color;
+      }
+    } else {
+      if (type == 4 || type == 5) {
+        window._cl_style[0] = document.all.namoswcliplayer0.style;
+        window._cl_style[0].pixelWidth  = rect_width/2;
+        window._cl_style[0].pixelHeight = rect_height;
+        window._cl_style[0].pixelLeft = rect_left;
+        window._cl_style[0].pixelTop  = rect_top;
+        window._cl_style[0].clip      = "rect(0" + (rect_width/2) + " " + rect_height + " 0)";
+	window._cl_style[0].backgroundColor = color;
+
+        window._cl_style[1] = document.all.namoswcliplayer1.style;
+        window._cl_style[1].pixelWidth  = rect_width/2;
+        window._cl_style[1].pixelHeight = rect_height;
+        window._cl_style[1].pixelLeft = rect_left + rect_width/2;
+        window._cl_style[1].pixelTop  = rect_top;
+        window._cl_style[1].clip      = "rect(0" + (rect_width/2) + " " + rect_height + " 0)";
+	window._cl_style[1].backgroundColor = color;
+      }
+
+      if (type == 4 || type == 6) {
+        window._cl_style[2] = document.all.namoswcliplayer2.style;
+        window._cl_style[2].pixelWidth  = rect_width;
+        window._cl_style[2].pixelHeight = rect_height/2;
+        window._cl_style[2].pixelLeft = rect_left;
+        window._cl_style[2].pixelTop  = rect_top;
+        window._cl_style[2].clip      = "rect(0" + rect_width + " " + (rect_height/2) + " 0)";
+	window._cl_style[2].backgroundColor = color;
+
+        window._cl_style[3] = document.all.namoswcliplayer3.style;
+        window._cl_style[3].pixelWidth  = rect_width;
+        window._cl_style[3].pixelHeight = rect_height/2;
+        window._cl_style[3].pixelLeft = rect_left;
+        window._cl_style[3].pixelTop  = rect_top + rect_height/2;
+        window._cl_style[3].clip      = "rect(0" + rect_width + " " + (rect_height/2) + " 0)";
+	window._cl_style[3].backgroundColor = color;
+      }
+
+    }
+    window._cl_interval = setInterval("namosw_cl_change_clip456(" + type + ")", 10);
+  }
+}
+
+function namosw_cl_change_clip1()
+{
+  var height = window._cl_rect_height  / window._cl_number;
+
+  window._cl_count += 2;
+
+  for (i = 0; i < window._cl_number; i++) {
+    if (navigator.appName.indexOf('Netscape', 0) != -1) {
+      window._cl_style[i].clip.top  = window._cl_count;
+    } else {
+      window._cl_style[i].clip = "rect(" + window._cl_count + " auto " + height + " auto)";
+    }
+  }
+
+  if (height <= window._cl_count)
+    clearInterval(window._cl_interval);
+}
+
+function namosw_cl_change_clip2()
+{
+  var width = window._cl_rect_width  / window._cl_number;
+
+  window._cl_count += 2;
+
+  for (i = 0; i < window._cl_number; i++) {
+    if (navigator.appName.indexOf('Netscape', 0) != -1) {
+      window._cl_style[i].clip.left  = window._cl_count;
+    } else {
+      window._cl_style[i].clip = "rect(auto " + width + " auto " + window._cl_count + ")";
+    }
+  }
+
+  if (width <= window._cl_count)
+    clearInterval(window._cl_interval);
+}
+
+function namosw_cl_change_clip3()
+{
+  var rect_width  = window._cl_rect_width;
+  var rect_height = window._cl_rect_height;
+
+  var x_delta = rect_width/2/window._cl_max_count*window._cl_count;
+  var y_delta = rect_height/2/window._cl_max_count*window._cl_count;
+
+  window._cl_count++;
+
+    if (navigator.appName.indexOf('Netscape', 0) != -1) {
+      window._cl_style[0].clip.left = x_delta;
+      window._cl_style[0].clip.top  = y_delta;
+      window._cl_style[0].clip.right  = rect_width  - x_delta;
+      window._cl_style[0].clip.bottom = rect_height - y_delta;
+    } else {
+      var top, right, bottom, left;
+      top    = y_delta;
+      right  = rect_width - x_delta;
+      bottom = rect_height - y_delta;
+      left   = x_delta;
+      window._cl_style[0].clip = "rect(" + top + " " + right + " " + bottom + " " + left + ")";
+    }  
+
+  if (window._cl_max_count < window._cl_count)
+    clearInterval(window._cl_interval);
+}
+
+function namosw_cl_change_clip456(type)
+{
+  var rect_width  = window._cl_rect_width;
+  var rect_height = window._cl_rect_height;
+
+  var x_delta = rect_width/2/window._cl_max_count*window._cl_count;
+  var y_delta = rect_height/2/window._cl_max_count*window._cl_count;
+
+  window._cl_count++;
+
+  if (navigator.appName.indexOf('Netscape', 0) != -1) {
+    if (type == 4 || type == 5) {
+      window._cl_style[0].clip.right = rect_width/2 - x_delta;
+      window._cl_style[1].clip.left  = x_delta;
+    }
+    if (type == 4 || type == 6) {
+      window._cl_style[2].clip.bottom = rect_height/2 - y_delta;
+      window._cl_style[3].clip.top    = y_delta;
+    }
+  } else {
+    var top, right, bottom, left;
+
+    right   = rect_width/2 - x_delta;
+    left    = x_delta;
+    bottom  = rect_height/2 - y_delta;
+    top     = y_delta;
+
+    if (type == 4 || type == 5) {
+      window._cl_style[0].clip = "rect(auto " + right + " auto 0)";
+      window._cl_style[1].clip = "rect(auto " + (rect_width/2) + " auto " + left + ")";
+    }
+    if (type == 4 || type == 6) {
+      window._cl_style[2].clip = "rect(0 auto " + bottom + " auto)";
+      window._cl_style[3].clip = "rect(" + top + " auto " + (rect_height/2) + " auto)";
+    }
+  }  
+
+  if (window._cl_max_count < window._cl_count)
+    clearInterval(window._cl_interval);
+}
+
+function namosw_cl_remove_box() 
+{
+  var i;
+
+  i = Math.round(Math.random()*(window._cl_number*window._cl_number-1));
+  while (window._cl_style[i].visibility == 'hidden' || window._cl_style[i].visibility == 'hide') 
+    i = Math.round(Math.random()*(window._cl_number*window._cl_number-1));
+  window._cl_style[i].visibility = 'hidden';
+
+  window._cl_count++;
+  if (window._cl_number*window._cl_number <= window._cl_count)
+    clearInterval(window._cl_interval);
+}
+
+// -->
+</script>
+<script language="JavaScript">
+<!--
+function na_change_img_src(name, nsdoc, rpath, preload)
+{ 
+  var img = eval((navigator.appName == 'Netscape') ? nsdoc+'.'+name : 'document.all.'+name);
+  if (name == '')
+    return;
+  if (img) {
+    img.altsrc = img.src;
+    img.src    = rpath;
+  } 
+}
+
+function na_preload_img()
+{ 
+  var img_list = na_preload_img.arguments;
+  if (document.preloadlist == null) 
+    document.preloadlist = new Array();
+  var top = document.preloadlist.length;
+  for (var i=0; i < img_list.length; i++) {
+    document.preloadlist[top+i]     = new Image;
+    document.preloadlist[top+i].src = img_list[i+1];
+  } 
+}
+
+function na_restore_img_src(name, nsdoc)
+{
+  var img = eval((navigator.appName == 'Netscape') ? nsdoc+'.'+name : 'document.all.'+name);
+  if (name == '')
+    return;
+  if (img && img.altsrc) {
+    img.src    = img.altsrc;
+    img.altsrc = null;
+  } 
+}
+
+// -->
+</script>
+</head>
+
+<body background="images/nth_smile_bg.gif" bgcolor="#9DFFFF" text="#000000" link="fuchsia" vlink="gray" alink="#8000FF" OnLoad=" namosw_init_clip_effect(0, 0, 'black');na_preload_img(false, 'nav/nav_smile__home_btn_vr.gif', 'nav/nav_smile_special_1_1_tvr.gif', 'nav/nav_smile_family_1_tvr.gif', 'nav/nav_smile_special_1_tvr.gif', 'nav/nav_smile_family_tvr.gif', 'nav/nav_smile_news_tvr.gif', 'nav/nav_smile_news_2_tvr.gif', 'nav/nav_smile_album_1_tvr.gif', 'nav/nav_smile_special_tvr.gif');">
+<table border="0" width="750" bordercolordark="#008040" bordercolorlight="silver" cellspacing="2" align="center">
+    <tr>
+        <td width="125">
+            <p>&nbsp;</p>
+        </td>
+        <td align="center"><!--NAMO_NAVBAR_START B H    -->
+<div>
+<img src="nav/nav_smile_album_bhb.gif" name="nav_album_BH0" border="0" class="namo-banner" alt="小罔腰寫真集"></div>
+            <!--NAMO_NAVBAR_END--></td>
+    </tr>
+    <tr>
+        <td width="125">
+            <p>&nbsp;</p>
+        </td>
+        <td align="center"><!--NAMO_NAVBAR_START C H    -->
+<div>
+</div>
+            <!--NAMO_NAVBAR_END--></td>
+    </tr>
+    <tr>
+        <td width="125" valign="top"><!--NAMO_NAVBAR_START T V   h-->
+<div>
+<a href="index.html" 
+onmouseover="na_change_img_src('nav_album_TV0', 'document', 'nav/nav_smile__home_btn_vr.gif', true)" 
+onmouseout="na_restore_img_src('nav_album_TV0', 'document')"><img src="nav/nav_smile__home_btn_v.gif" name="nav_album_TV0" border="0" class="namo-button1" alt="首頁"></a><br>
+<a href="special_1_1.html" 
+onmouseover="na_change_img_src('nav_album_TV1', 'document', 'nav/nav_smile_special_1_1_tvr.gif', true)" 
+onmouseout="na_restore_img_src('nav_album_TV1', 'document')"><img src="nav/nav_smile_special_1_1_tv.gif" name="nav_album_TV1" border="0" class="namo-button1" alt="命名由來"></a><br>
+<a href="family_1.html" 
+onmouseover="na_change_img_src('nav_album_TV2', 'document', 'nav/nav_smile_family_1_tvr.gif', true)" 
+onmouseout="na_restore_img_src('nav_album_TV2', 'document')"><img src="nav/nav_smile_family_1_tv.gif" name="nav_album_TV2" border="0" class="namo-button1" alt="小罔腰逃家記"></a><br>
+<a href="special_1.html" 
+onmouseover="na_change_img_src('nav_album_TV3', 'document', 'nav/nav_smile_special_1_tvr.gif', true)" 
+onmouseout="na_restore_img_src('nav_album_TV3', 'document')"><img src="nav/nav_smile_special_1_tv.gif" name="nav_album_TV3" border="0" class="namo-button1" alt="小罔腰大事紀"></a><br>
+<img src="nav/nav_smile_album_tvh.gif" name="nav_album_TV4" border="0" class="namo-hibutton1" alt="小罔腰寫真集"><br>
+<a href="family.html" 
+onmouseover="na_change_img_src('nav_album_TV5', 'document', 'nav/nav_smile_family_tvr.gif', true)" 
+onmouseout="na_restore_img_src('nav_album_TV5', 'document')"><img src="nav/nav_smile_family_tv.gif" name="nav_album_TV5" border="0" class="namo-button1" alt="溫馨家族"></a><br>
+<a href="news.html" 
+onmouseover="na_change_img_src('nav_album_TV6', 'document', 'nav/nav_smile_news_tvr.gif', true)" 
+onmouseout="na_restore_img_src('nav_album_TV6', 'document')"><img src="nav/nav_smile_news_tv.gif" name="nav_album_TV6" border="0" class="namo-button1" alt="影片集"></a><br>
+<a href="news_2.html" 
+onmouseover="na_change_img_src('nav_album_TV7', 'document', 'nav/nav_smile_news_2_tvr.gif', true)" 
+onmouseout="na_restore_img_src('nav_album_TV7', 'document')"><img src="nav/nav_smile_news_2_tv.gif" name="nav_album_TV7" border="0" class="namo-button1" alt="獻給罔腰的歌"></a><br>
+<a href="album_1.html" 
+onmouseover="na_change_img_src('nav_album_TV8', 'document', 'nav/nav_smile_album_1_tvr.gif', true)" 
+onmouseout="na_restore_img_src('nav_album_TV8', 'document')"><img src="nav/nav_smile_album_1_tv.gif" name="nav_album_TV8" border="0" class="namo-button1" alt="訪客留影"></a><br>
+<a href="special.html" 
+onmouseover="na_change_img_src('nav_album_TV9', 'document', 'nav/nav_smile_special_tvr.gif', true)" 
+onmouseout="na_restore_img_src('nav_album_TV9', 'document')"><img src="nav/nav_smile_special_tv.gif" name="nav_album_TV9" border="0" class="namo-button1" alt="感謝您"></a></div>
+            <!--NAMO_NAVBAR_END--></td>
+        <td valign="top" align="center">
+            <p align="center"><img src="images/nth_smile_hr.gif" border="0" class="namo-hr"></p>
+            <p align="center"><font size="2">下面是禹蓉的照片集，點選縮圖還可以放大哦！請大家慢慢欣賞！</font></p>
+            <table align="center" class="namo-table" border="1" width="672">
+                <tr>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-01.JPG"><img src="PhotoShow/IAO-01_tm.JPG" width="120" height="90" border="0" alt="IAO-01.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-02.JPG"><img src="PhotoShow/IAO-02_tm.JPG" width="120" height="90" border="0" alt="IAO-02.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-03.JPG"><img src="PhotoShow/IAO-03_tm.JPG" width="120" height="90" border="0" alt="IAO-03.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-04.JPG"><img src="PhotoShow/IAO-04_tm.JPG" width="120" height="90" border="0" alt="IAO-04.JPG"></a></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="161" height="47">
+                        <p><font size="2">(01)剛出生的禹蓉</font></p>
+                    </td>
+                    <td width="161" height="47">
+                        <p><font size="2">(02)與林正宗醫師合照</font></p>
+                    </td>
+                    <td width="161" height="47">
+                        <p><font size="2">(03)與婦產科的護士阿姨合照</font></p>
+                    </td>
+                    <td width="161" height="47">
+                        <p><font size="2">&nbsp;(04)與婦產科的護士阿姨合照</font></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-05.JPG"><img src="PhotoShow/IAO-05_tm.JPG" width="120" height="90" border="0" alt="IAO-05.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-06.JPG"><img src="PhotoShow/IAO-06_tm.JPG" width="120" height="90" border="0" alt="IAO-06.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-07.JPG"><img src="PhotoShow/IAO-07_tm.JPG" width="120" height="90" border="0" alt="IAO-07.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-08.JPG"><img src="PhotoShow/IAO-08_tm.JPG" width="120" height="90" border="0" alt="IAO-08.JPG"></a></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="161">
+                        <p><font size="2">(05)這是媽媽偷拍的</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(06)...</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(07)...</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(08)...</font></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-09.JPG"><img src="PhotoShow/IAO-09_tm.JPG" width="120" height="90" border="0" alt="IAO-09.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-10.JPG"><img src="PhotoShow/IAO-10_tm.JPG" width="120" height="90" border="0" alt="IAO-10.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-11.JPG"><img src="PhotoShow/IAO-11_tm.JPG" width="120" height="90" border="0" alt="IAO-11.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-12.JPG"><img src="PhotoShow/IAO-12_tm.JPG" width="120" height="90" border="0" alt="IAO-12.JPG"></a></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="161">
+                        <p><font size="2">(09)從 06 ~09 你覺得哪張最好看呢?</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(10)這是月子中心的阿姨</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(11)這是月子中心的阿姨</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(12)這是月子中心的阿姨</font></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-13.JPG"><img src="PhotoShow/IAO-13_tm.JPG" width="120" height="90" border="0" alt="IAO-13.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-14.JPG"><img src="PhotoShow/IAO-14_tm.JPG" width="120" height="90" border="0" alt="IAO-14.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-15.JPG"><img src="PhotoShow/IAO-15_tm.JPG" width="120" height="90" border="0" alt="IAO-15.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-16.JPG"><img src="PhotoShow/IAO-16_tm.JPG" width="120" height="90" border="0" alt="IAO-16.JPG"></a></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="161">
+                        <p><font size="2">(13)正在辦離開的手續</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(14)...</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(15)這是月子中心的阿姨</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(16)這是月子中心的阿姨</font></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-17.JPG"><img src="PhotoShow/IAO-17_tm.JPG" width="120" height="90" border="0" alt="IAO-17.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-18.JPG"><img src="PhotoShow/IAO-18_tm.JPG" width="120" height="90" border="0" alt="IAO-18.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-19.JPG"><img src="PhotoShow/IAO-19_tm.JPG" width="120" height="90" border="0" alt="IAO-19.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-20.JPG"><img src="PhotoShow/IAO-20_tm.JPG" width="120" height="90" border="0" alt="IAO-20.JPG"></a></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="161">
+                        <p><font size="2">(17)...</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(18)真不好意思，被看光了....</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(19)...</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(20)...</font></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-21.JPG"><img src="PhotoShow/IAO-21_tm.JPG" width="120" height="90" border="0" alt="IAO-21.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-22.JPG"><img src="PhotoShow/IAO-22_tm.JPG" width="120" height="90" border="0" alt="IAO-22.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-23.JPG"><img src="PhotoShow/IAO-23_tm.JPG" width="120" height="90" border="0" alt="IAO-23.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-24.JPG"><img src="PhotoShow/IAO-24_tm.JPG" width="120" height="90" border="0" alt="IAO-24.JPG"></a></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="161">
+                        <p><font size="2">(21)...</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(22)我不要啦!!</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(23)哥哥只顧著自己吃的東西，根本不理我!</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(24)...</font></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-25.JPG"><img src="PhotoShow/IAO-25_tm.JPG" width="120" height="90" border="0" alt="IAO-25.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-26.JPG"><img src="PhotoShow/IAO-26_tm.JPG" width="120" height="90" border="0" alt="IAO-26.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-27.JPG"><img src="PhotoShow/IAO-27_tm.JPG" width="120" height="90" border="0" alt="IAO-27.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-28.JPG"><img src="PhotoShow/IAO-28_tm.JPG" width="120" height="90" border="0" alt="IAO-28.JPG"></a></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="161">
+                        <p><font size="2">(25)...</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(26)吃奶囉!!</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(27)在馬偕復健科治療斜頸症</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(28)這是很痛的哦！</font></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-29.JPG"><img src="PhotoShow/IAO-29_tm.JPG" width="120" height="90" border="0" alt="IAO-29.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-30.JPG"><img src="PhotoShow/IAO-30_tm.JPG" width="120" height="90" border="0" alt="IAO-30.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-31.JPG"><img src="PhotoShow/IAO-31_tm.JPG" width="120" height="90" border="0" alt="IAO-31.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-32.JPG"><img src="PhotoShow/IAO-32_tm.JPG" width="120" height="90" border="0" alt="IAO-32.JPG"></a></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="161">
+                        <p><font size="2">(29)...</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(30)...</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(31)哥哥終於來咻咻我了</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(32)這是媽媽偷拍的</font></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-33.JPG"><img src="PhotoShow/IAO-33_tm.JPG" width="120" height="90" border="0" alt="IAO-33.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-34.JPG"><img src="PhotoShow/IAO-34_tm.JPG" width="120" height="90" border="0" alt="IAO-34.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-35.JPG"><img src="PhotoShow/IAO-35_tm.JPG" width="120" height="90" border="0" alt="IAO-35.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-36.JPG"><img src="PhotoShow/IAO-36_tm.JPG" width="120" height="90" border="0" alt="IAO-36.JPG"></a></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="161">
+                        <p><font size="2">(33)哥哥還是關心我的</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(34)滿月時，到馬偕做健兒門診</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(35)打針了，好痛！</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(36)...</font></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-37.JPG"><img src="PhotoShow/IAO-37_tm.JPG" width="120" height="90" border="0" alt="IAO-37.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-38.JPG"><img src="PhotoShow/IAO-38_tm.JPG" width="120" height="90" border="0" alt="IAO-38.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-39.JPG"><img src="PhotoShow/IAO-39_tm.JPG" width="120" height="90" border="0" alt="IAO-39.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-40.JPG"><img src="PhotoShow/IAO-40_tm.JPG" width="120" height="90" border="0" alt="IAO-40.JPG"></a></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="161">
+                        <p><font size="2">(37)...</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(38)這是我們全家福</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(39)...</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(40)...</font></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-41.JPG"><img src="PhotoShow/IAO-41_tm.JPG" width="120" height="90" border="0" alt="IAO-41.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-42.JPG"><img src="PhotoShow/IAO-42_tm.JPG" width="120" height="90" border="0" alt="IAO-42.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-43.JPG"><img src="PhotoShow/IAO-43_tm.JPG" width="120" height="90" border="0" alt="IAO-43.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-44.JPG"><img src="PhotoShow/IAO-44_tm.JPG" width="120" height="90" border="0" alt="IAO-44.JPG"></a></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="161">
+                        <p><font size="2">(41)...</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(42)...</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(43)...</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(44)...</font></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-45.JPG"><img src="PhotoShow/IAO-45_tm.JPG" width="120" height="90" border="0" alt="IAO-45.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-46.JPG"><img src="PhotoShow/IAO-46_tm.JPG" width="120" height="90" border="0" alt="IAO-46.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-47.JPG"><img src="PhotoShow/IAO-47_tm.JPG" width="120" height="90" border="0" alt="IAO-47.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-48.JPG"><img src="PhotoShow/IAO-48_tm.JPG" width="120" height="90" border="0" alt="IAO-48.JPG"></a></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="161">
+                        <p><font size="2">(45)我感冒了，給醫生檢查中...</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(46)量個耳溫吧！</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(47)爸媽在錄音室錄要送給我的歌！</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(48)...</font></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-49.JPG"><img src="PhotoShow/IAO-49_tm.JPG" width="120" height="90" border="0" alt="IAO-49.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-50.JPG"><img src="PhotoShow/IAO-50_tm.JPG" width="120" height="90" border="0" alt="IAO-50.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-51.JPG"><img src="PhotoShow/IAO-51_tm.JPG" width="120" height="90" border="0" alt="IAO-51.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-52.JPG"><img src="PhotoShow/IAO-52_tm.JPG" width="120" height="90" border="0" alt="IAO-52.JPG"></a></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="161">
+                        <p><font size="2">(49)這是做胎毛筆的師父</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(50)我要剃光頭囉！</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(51)終於剃完了</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(52)我光頭的樣子還算可愛吧！</font></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-53.JPG"><img src="PhotoShow/IAO-53_tm.JPG" width="120" height="90" border="0" alt="IAO-53.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center"><a href="PhotoShow/IAO-54.JPG"><img src="PhotoShow/IAO-54_tm.JPG" width="120" height="90" border="0" alt="IAO-54.JPG"></a></p>
+                    </td>
+                    <td width="161">
+                        <p align="center">&nbsp;</p>
+                    </td>
+                    <td width="161">
+                        <p align="center">&nbsp;</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td width="161">
+                        <p><font size="2">(53)與公公合影</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">(54)</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">&nbsp;</font></p>
+                    </td>
+                    <td width="161">
+                        <p><font size="2">&nbsp;</font></p>
+                    </td>
+                </tr>
+            </table>
+            <p align="center"><img src="images/nth_smile_hr.gif" border="0" class="namo-hr"></p>
+<font size="2"><!--NAMO_NAVBAR_START T h   h-->
+<div>
+[<a href="index.html">首頁</a>][<a href="special_1_1.html">命名由來</a>][<a href="family_1.html">小罔腰逃家記</a>][<a href="special_1.html">小罔腰大事紀</a>][小罔腰寫真集][<a href="family.html">溫馨家族</a>][<a href="news.html">影片集</a>][<a href="news_2.html">獻給罔腰的歌</a>][<a href="album_1.html">訪客留影</a>][<a href="special.html">感謝您</a>]</div>
+            <!--NAMO_NAVBAR_END--></font>
+            <hr size="1" width="516">
+            <p align="center"><font size="1">版權沒有，歡迎使用<br><a href="mailto:chener@ms1.hinet.ent">chener@ms1.hinet.ent</a></font></p>
+        </td>
+    </tr>
+</table>
+<p></p>
+
+<div id="namoswcliplayer0" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer1" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer2" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer3" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer4" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer5" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer6" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer7" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer8" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer9" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer10" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer11" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer12" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer13" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer14" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer15" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer16" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer17" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer18" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer19" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer20" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer21" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer22" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer23" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer24" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer25" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer26" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer27" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer28" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer29" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer30" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer31" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer32" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer33" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer34" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer35" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer36" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer37" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer38" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer39" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer40" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer41" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer42" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer43" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer44" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer45" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer46" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer47" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer48" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer49" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer50" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer51" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer52" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer53" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer54" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer55" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer56" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer57" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer58" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer59" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer60" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer61" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer62" style="position:absolute; left:-100; top:-100; z-index:1000;"></div>
+<div id="namoswcliplayer63" style="position:absolute; left:-100; top:-100; z-index:1000;"></div></body>
+
+</html>
